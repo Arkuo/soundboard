@@ -1,5 +1,7 @@
 Soundboard::Application.routes.draw do
 
+  resources :sounds
+
   get "home/index"
 
   match '/auth/:provider/callback', to: 'sessions#create'

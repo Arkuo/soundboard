@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
   
+  def login_required
+    unless logged_in?
+      redirect_to "/auth/google_oauth2"
+      return false
+    end
+    return true
+  end
   
   def current_user=(user)
     return if user.nil?

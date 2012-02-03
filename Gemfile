@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'carrierwave'
+gem 'fog'
 gem 'omniauth-google-oauth2'
 
 gem 'jquery-rails'
