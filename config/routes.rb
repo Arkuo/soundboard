@@ -1,4 +1,12 @@
 Soundboard::Application.routes.draw do
+
+  get "home/index"
+
+  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/failure', to: 'sessions#failure'
+
+  root :to => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
