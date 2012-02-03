@@ -1,8 +1,14 @@
 Soundboard::Application.routes.draw do
 
-  resources :sounds
+  resources :sounds do
+    member do
+      post 'play'
+    end
+  end
 
   get "home/index"
+
+  match '/soundboard', to: 'home#soundboard'
 
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/auth/failure', to: 'sessions#failure'

@@ -1,0 +1,7 @@
+<h2>Your Soundboard</h2>
+<%- @sounds.each do |sound| %>
+<%= form_for sound, :url => play_sound_path(sound), :method => :post do |f| %><%= f.submit sound.title %><% end %>
+
+
+<%- end -%>
+<p><%= link_to "Edit sounds", sounds_path %></p>

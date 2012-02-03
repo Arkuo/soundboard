@@ -24,6 +24,17 @@ class SoundsController < ApplicationController
     end
   end
 
+  def play
+    @sound = Sound.find(params[:id])
+    ret = @sound.play_on_nabaztag
+    unless ret == '"ok"'
+      flash[:notice] == 'Error: #{ret}'
+    else
+      flash[:notice] = "Played sound"
+    end
+    redirect_to soundboard_url
+  end
+
   # GET /sounds/new
   # GET /sounds/new.json
   def new

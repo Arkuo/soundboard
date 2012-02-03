@@ -1,9 +1,9 @@
 <h1>Listing sounds</h1>
 
 <table>
-  <tr>
-    <th>File</th>
+  <tr>    
     <th>Title</th>
+    <th></th>
     <th>User</th>
     <th></th>
     <th></th>
@@ -11,12 +11,12 @@
   </tr>
 
 <% @sounds.each do |sound| %>
-  <tr>
-    <td><%= sound.file %></td>
+  <tr>    
     <td><%= sound.title %></td>
-    <td><%= sound.user_id %></td>
-    <td><%= link_to 'Show', sound %></td>
+    <td><audio src='<%= sound.file %>' controls/></td>
+    <td><%= sound.user.email %></td>
     <td><%= link_to 'Edit', edit_sound_path(sound) %></td>
+    <td><%= link_to 'Play', play_sound_path(sound), :method => :post %></td>
     <td><%= link_to 'Destroy', sound, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
