@@ -27,6 +27,7 @@ class SoundsController < ApplicationController
   def play
     @sound = Sound.find(params[:id])
     ret = @sound.play_on_nabaztag
+    puts ret
     unless ret == '"ok"'
       flash[:notice] == 'Error: #{ret}'
     else

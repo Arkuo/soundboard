@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'uri'
 require 'rack/utils'
 class Sound < ActiveRecord::Base
 
@@ -13,7 +14,9 @@ class Sound < ActiveRecord::Base
   mount_uploader :file, SoundfileUploader
 
   def play_on_nabaztag
-    return open(NABALIVE_URL + Rack::Utils.escape(file)).read
+    url = NABALIVE_URL + URI.escape(file.to_s.gsub(/^https/, 'http'))
+    puts url
+    return open(url).read
   rescue OpenURI::HTTPError => e
     return e
   end
