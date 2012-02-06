@@ -7,6 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <h1>mindmatters sound board</h1>
+  <nav>
+    <%- if logged_in? -%>
+      You're logged in as <%= current_user.email %>
+      | <%= link_to "Edit sounds", sounds_path %>
+    <%- else %>
+      <%= link_to "Log in", "/auth/google_oauth2" %>
+    <% end %>
+  </nav>
+
+
+</header>
 <%- if flash[:notice] -%>
   <div class="flash notice"><%= flash[:notice] %></div>
 <% end %>
