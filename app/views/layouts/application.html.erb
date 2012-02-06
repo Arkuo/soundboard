@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-  <h1>mindmatters sound board</h1>
+  <h1>hasenklang</h1>
   <nav>
     <%- if logged_in? -%>
       You're logged in as <%= current_user.email %>
@@ -23,7 +23,8 @@
 <%- if flash[:notice] -%>
   <div class="flash notice"><%= flash[:notice] %></div>
 <% end %>
-<%= yield %>
-
+<section class="main">
+  <%= yield %>
+</section>
 </body>
 </html>
