@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :current_user, :logged_in?
+
+  force_ssl if Rails.env.production?
   
   def login_required
     unless logged_in?
